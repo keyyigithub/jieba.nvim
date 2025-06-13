@@ -86,7 +86,7 @@ local function insert_implicit_space_rule(parsed_tok1, parsed_tok2)
 		[TokenType.punc] = {
 			[TokenType.hans] = true,
 			[TokenType.engs] = false,
-			[TokenType.punc] = true,
+			[TokenType.punc] = false,
 			[TokenType.space] = false,
 			[TokenType.non_word] = true,
 		},
