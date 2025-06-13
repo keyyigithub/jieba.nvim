@@ -24,7 +24,7 @@ local half_punc = C(S("·.,;!?()[]{}+-=_!@#$%^&*~`'\"<>:|\\")) ^ 1
 local full_punc = C(utfR(0x3000, 0x303F) + utfR(0xFF01, 0xFF5E) + utfR(0x2000, 0x206F)) ^ 1 -- 0xFF01 to 0xFF5E
 
 -- TokenType Enum
-TokenType = { hans = 1, punc = 2, space = 3, non_word = 4 }
+TokenType = { hans = 1, engs = 2, punc = 3, space = 4, non_word = 5 }
 
 local function get_token_type(str)
 	if not str or str_match(str, "%s+") then
@@ -33,8 +33,11 @@ local function get_token_type(str)
 	if (half_punc + full_punc):match(str) then
 		return TokenType.punc
 	end
-	if (nums + hans + engs):match(str) then
+	if hans:match(str) then
 		return TokenType.hans
+	end
+	if (engs + nums):match(str) then
+		return TokenType.engs
 	end
 	return TokenType.non_word
 end
