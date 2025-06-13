@@ -70,25 +70,36 @@ local function insert_implicit_space_rule(parsed_tok1, parsed_tok2)
 	end
 	local rules = {
 		[TokenType.hans] = {
+			[TokenType.hans] = false,
+			[TokenType.engs] = true,
+			[TokenType.punc] = false,
+			[TokenType.space] = false,
+			[TokenType.non_word] = false,
+		},
+		[TokenType.engs] = {
 			[TokenType.hans] = true,
+			[TokenType.engs] = false,
 			[TokenType.punc] = false,
 			[TokenType.space] = false,
 			[TokenType.non_word] = false,
 		},
 		[TokenType.punc] = {
 			[TokenType.hans] = true,
+			[TokenType.engs] = false,
 			[TokenType.punc] = true,
 			[TokenType.space] = false,
 			[TokenType.non_word] = true,
 		},
 		[TokenType.space] = {
 			[TokenType.hans] = false,
+			[TokenType.engs] = false,
 			[TokenType.punc] = false,
 			[TokenType.space] = false,
 			[TokenType.non_word] = false,
 		},
 		[TokenType.non_word] = {
 			[TokenType.hans] = false,
+			[TokenType.engs] = false,
 			[TokenType.punc] = false,
 			[TokenType.space] = false,
 			[TokenType.non_word] = false,
